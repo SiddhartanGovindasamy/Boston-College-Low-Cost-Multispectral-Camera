@@ -15,9 +15,7 @@ for i in {1..1000}
 	#Construct the filename
 	FILENAME="${OUTPUT_DIR}/picture_${TIMESTAMP}.jpg"
 
-	#Take a picture using libcamera-still
-	#libcamera-still --width 12400 --height 1600 -o  "$FILENAME" --timeout 1
-	#libcamera-still --width 12400 --height 1600 -o "$FILENAME" --timeout 1  --brightness 0.0 --contrast 0.6  --shutter 1600 --gain 0.1
+	#Take a picture using libcamera-still with gain of 4
 	libcamera-still -o "$FILENAME" --timeout 1 --gain 4
 
 
