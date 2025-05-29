@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#Directory to save images
+OUTPUT_DIR="./Pictures/BananaExperiment"
+
+#Create the output directory if it doesn't exist
+mkdir -p "$OUTPUT_DIR"
+
+#Infinite loop to take pictures every 5 seconds 
+for i in {1..1000}
+ do
+	#Get the current timestamp
+	TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+
+	#Construct the filename
+	FILENAME="${OUTPUT_DIR}/picture_${TIMESTAMP}.jpg"
+
+	#Take a picture using libcamera-still
+	#libcamera-still --width 12400 --height 1600 -o  "$FILENAME" --timeout 1
+	#libcamera-still --width 12400 --height 1600 -o "$FILENAME" --timeout 1  --brightness 0.0 --contrast 0.6  --shutter 1600 --gain 0.1
+	libcamera-still -o "$FILENAME" --timeout 1 --gain 4
+
+
+	echo "Saved: $FILENAME"
+
+	#Wait 5 minutes
+	sleep 300
+done
